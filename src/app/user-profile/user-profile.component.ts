@@ -9,17 +9,29 @@ import { ConnectionService } from '../service/connection.service';
 export class UserProfileComponent {
 
   details:any;
+  userId: number | null = null;
+  loggedInUser: any;
+
   constructor(private service:ConnectionService) {
-    
+    this.userId = this.service.getUserId();
   }
 
   ngOnInit() {
-    this.getDetails();
+    this.getLoggedInUserDetails();
   }
 
-  getDetails(): void {
-    this.service.getLoginDetails().subscribe((response) => {
-      this.details = response.data[0];
-    })
+  getLoggedInUserDetails(): void {
+    if (this.userId !== null) {
+      this.service.getLoggedInUserDetails(this.userId).subscribe((response:any) => {
+        if (response.success) {
+          this.loggedInUser = response.data;
+        } else {
+          console.error('Error:', response.message);
+        }
+      });
+    } else {
+      console.error('Error: userId is null');
+    }
   }
+  
 }

@@ -5,13 +5,13 @@
     <h3 style="text-align: center">User Profile Details</h3>
     <hr />
     <div class="information">
-      <div><b>Email:</b> {{ details?.email }}</div>
+      <div><b>Email:</b> {{ loggedInUser?.email }}</div>
       <br />
-      <div><b>Password:</b> {{ details?.password }}</div>
+      <div><b>Password:</b> {{ loggedInUser?.password }}</div>
       <br />
       <div>
         <b>Login Time:</b>
-        {{ details?.login_time | date : "dd-MM-yyyy hh:mm a" }}
+        {{ loggedInUser?.login_time | date : "dd-MM-yyyy hh:mm a" }}
       </div>
     </div>
   </div>
