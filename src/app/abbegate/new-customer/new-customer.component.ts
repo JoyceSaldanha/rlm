@@ -19,7 +19,7 @@ onFileSelected(event: any): void {
 
 unSelectFile(file: File): void {
   const index = this.selectedFiles.indexOf(file);
-  if (index) {
+  if (index !== -1) {
     this.selectedFiles.splice(index, 1);
   }
 }
