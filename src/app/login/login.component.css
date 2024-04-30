@@ -1,0 +1,53 @@
+   .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .form-container {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 320px; 
+  }
+  
+  .header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .email-container, .pass-container {
+    margin-bottom: 20px;
+    margin-top: 2rem;
+  }
+  
+  .input-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .link {
+    color: blue;
+    cursor: pointer;
+  }
+  
+  .validation {
+    color: red;
+  }
+  
+  .invalid-field {
+    border-color: red;
+  }
+  

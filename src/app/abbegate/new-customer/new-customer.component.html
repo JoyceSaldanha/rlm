@@ -1,0 +1,20 @@
+<app-abbegate-header></app-abbegate-header>
+
+<div class="file-upload">
+  <label for="fileUpload"> Upload File </label>
+  <input
+    id="fileUpload"
+    style="display: none"
+    type="file"
+    (change)="onFileSelected($event)"
+    accept=".jpg,.pdf"
+    multiple
+  />
+</div>
+
+<div class="file-container">
+  <div *ngFor="let file of selectedFiles; let i = index" class="file">
+    {{ file.name }}
+    <span class="pi pi-times" (click)="unSelectFile(file)"></span>
+  </div>
+</div>

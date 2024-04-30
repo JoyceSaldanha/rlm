@@ -1,0 +1,19 @@
+.card-section {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.abbegate-card {
+    width: fit-content;
+    margin: auto;
+}
+
+.track-trace-card {
+    width: fit-content;
+    margin: auto;
+}
+
+.heading {
+    cursor: pointer;
+}
