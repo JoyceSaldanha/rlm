@@ -31,14 +31,18 @@ export class LoginComponent {
       const data = this.loginForm.getRawValue();
       this.loginForm.reset();
       this.service.checkCredentials(data).subscribe(response => {
-      if(response) {
+      if(response.success == true) {
         this.router.navigate(['/abbegate']);
       } else {
         this.validCredentials = true;
+        this.enterCredentials = false;
+        this.loginForm.reset()
       }
     });
     } else {
       this.enterCredentials = true;
+      this.validCredentials = false;
+      this.loginForm.reset()
     }
   }
 }

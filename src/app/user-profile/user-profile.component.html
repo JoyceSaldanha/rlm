@@ -1,17 +1,18 @@
 <app-abbegate></app-abbegate>
 
 <div class="container">
-    <div class="form-container">   
-        <h4>User profile details</h4>     
-         <div class="email-container">
-             Email: {{details?.email}}
-         </div>
-         <div class="pass-container">   
-            Password: {{details?.password}}
-         </div>  
-         <div class="pass-container">   
-            Login Time: {{details?.login_time}}
-         </div> 
+  <div class="form-container">
+    <h3 style="text-align: center">User Profile Details</h3>
+    <hr />
+    <div class="information">
+      <div><b>Email:</b> {{ details?.email }}</div>
+      <br />
+      <div><b>Password:</b> {{ details?.password }}</div>
+      <br />
+      <div>
+        <b>Login Time:</b>
+        {{ details?.login_time | date : "dd-MM-yyyy hh:mm a" }}
+      </div>
     </div>
-    </div>
-    
+  </div>
+</div>

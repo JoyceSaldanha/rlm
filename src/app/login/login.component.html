@@ -1,36 +1,48 @@
 <div class="container">
-<div class="form-container">
+  <div class="form-container">
     <div class="header">
-        <img src="../../assets/images/logo.png" alt="logo">
-        <h2>RLM</h2>
+      <img src="../../assets/images/logo.png" alt="logo" />
+      <h2>RLM</h2>
     </div>
-    
+
     <form [formGroup]="loginForm">
-        <div class="email-container">
-            <p-floatLabel>
-              <input id="email" type="text" pInputText formControlName="email" required/>
-              <label for="email">Email</label>
-          </p-floatLabel>
-        </div>
-    
-        <div class="pass-container">
-            <p-floatLabel>
-              <input id="password" type="text" pInputText formControlName="password" required/>
-              <label for="password">Password</label>
-          </p-floatLabel>
-        </div>
+      <div class="email-container">
+        <p-floatLabel>
+          <input
+            id="email"
+            type="text"
+            pInputText
+            formControlName="email"
+            required
+          />
+          <label for="email">Email</label>
+        </p-floatLabel>
+      </div>
+
+      <div class="pass-container">
+        <p-floatLabel>
+          <input
+            id="password"
+            type="password"
+            pInputText
+            formControlName="password"
+            required
+          />
+          <label for="password">Password</label>
+        </p-floatLabel>
+      </div>
     </form>
 
     <div class="login-container">
-        <p-button label="Login" (click)="login()"></p-button>
+      <p-button label="Login" (click)="login()"></p-button>
     </div>
 
     <div *ngIf="validCredentials">
-        <p class="validation">Wrong email or password</p>
+      <p class="validation">Wrong email or password</p>
     </div>
 
     <div *ngIf="enterCredentials">
-        <p class="validation">Please email and password</p>
+      <p class="validation">Please enter email and password</p>
     </div>
-</div>
+  </div>
 </div>
