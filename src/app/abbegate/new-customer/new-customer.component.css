@@ -1,4 +1,4 @@
-.file-upload {
+/* .file-upload {
     margin-top: 4rem;
     display: inline-block;
     padding: 10px 20px;
@@ -26,4 +26,33 @@
     width: max-content;
     margin: 10px;
     padding: 8px;
-}
+} */
+
+.container {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .form-container {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    display: grid;
+    justify-content: center;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .category {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 6rem;
+  }
+  

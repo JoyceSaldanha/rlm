@@ -38,7 +38,8 @@
     </form>
 
     <div class="login-container">
-      <p-button label="Login" (click)="login()"></p-button>
+      <p-toast></p-toast>
+      <p-button label="Login" pRipple (click)="login()"></p-button>
     </div>
 
     <div *ngIf="validCredentials">

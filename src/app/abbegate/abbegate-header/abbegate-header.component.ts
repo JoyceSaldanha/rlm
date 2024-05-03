@@ -58,9 +58,19 @@ export class AbbegateHeaderComponent {
                     separator: true
                 },
                 {
-                  label: 'Create Customer',
-                  icon: 'pi pi-user',
-                  routerLink: ['/abbegate/newCustomer']
+                  label: 'Customer',
+                  icon: 'pi pi-users',
+                  items: [
+                    {
+                        label:'Create',
+                        icon: 'pi pi-user-plus',
+                        routerLink: ['/abbegate/newCustomer']
+                    },{
+                        label:'View',
+                        icon: 'pi pi-user',
+                        routerLink: ['/abbegate/viewCustomer']
+                    }
+                  ]
                 }
               ]
           },

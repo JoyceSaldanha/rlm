@@ -1,0 +1,23 @@
+<app-abbegate-header></app-abbegate-header>
+<h2>Customer Details</h2>
+
+<p-table [value]="customerDetails" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Country</th>
+      <th>Group Name</th>
+      <th>Category</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-customerDetails>
+    <tr>
+      <td>{{ customerDetails.name }}</td>
+      <td>{{ customerDetails.email }}</td>
+      <td>{{ customerDetails.country }}</td>
+      <td>{{ customerDetails.group_name }}</td>
+      <td>{{ customerDetails.category }}</td>
+    </tr>
+  </ng-template>
+</p-table>

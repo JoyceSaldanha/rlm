@@ -21,8 +21,13 @@ import { MenubarModule } from 'primeng/menubar';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AbbegateHeaderComponent } from './abbegate/abbegate-header/abbegate-header.component';
 import { NewCustomerComponent } from './abbegate/new-customer/new-customer.component';
-
-
+import { DropdownModule } from 'primeng/dropdown';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ViewCustomerComponent } from './abbegate/view-customer/view-customer.component';
+import { TableModule } from 'primeng/table';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,8 @@ import { NewCustomerComponent } from './abbegate/new-customer/new-customer.compo
     TrackAndTraceComponent,
     UserProfileComponent,
     AbbegateHeaderComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    ViewCustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -49,9 +55,14 @@ import { NewCustomerComponent } from './abbegate/new-customer/new-customer.compo
     AvatarGroupModule,
     CardModule,
     FloatLabelModule,
-    MenubarModule
+    MenubarModule,
+    DropdownModule,
+    CheckboxModule,
+    TableModule,
+    MultiSelectModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConnectionService } from '../service/connection.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   enterCredentials:boolean = false
   userId: number = 0;
 
-  constructor(private router: Router, private service:ConnectionService) {
+  constructor(private router: Router, private service:ConnectionService,private messageService: MessageService) {
     this.loginForm = new FormGroup({
       email: new FormControl('',[Validators.required]),
       password: new FormControl('',[Validators.required])
@@ -26,26 +27,35 @@ export class LoginComponent {
   }
 
   login(): void {
-    if(this.loginForm.valid) {
+    if (this.loginForm.valid) {
       this.validCredentials = false;
       this.enterCredentials = false;
       const data = this.loginForm.getRawValue();
       this.loginForm.reset();
       this.service.checkCredentials(data).subscribe(response => {
-      if(response.success == true) {
-        this.userId = response.userId;
-        this.service.setUserId(this.userId);
-        this.router.navigate(['/abbegate']);
-      } else {
-        this.validCredentials = true;
-        this.enterCredentials = false;
-        this.loginForm.reset()
-      }
-    });
+        if (response.success == true) {
+          this.userId = response.userId;
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Login Successful',
+            detail: 'You have successfully logged in.',
+            life: 3000 // Adjust the toast display duration as needed
+          });
+          this.service.setUserId(this.userId);
+          // Delay the navigation until after the toast message has been displayed
+          setTimeout(() => {
+            this.router.navigate(['/abbegate']);
+          }, 1000); // Adjust the delay time if needed
+        } else {
+          this.validCredentials = true;
+          this.enterCredentials = false;
+          this.loginForm.reset();
+        }
+      });
     } else {
       this.enterCredentials = true;
       this.validCredentials = false;
-      this.loginForm.reset()
+      this.loginForm.reset();
     }
   }
 }
