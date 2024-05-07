@@ -6,6 +6,7 @@ import { TrackAndTraceComponent } from './track-and-trace/track-and-trace.compon
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NewCustomerComponent } from './abbegate/new-customer/new-customer.component';
 import { ViewCustomerComponent } from './abbegate/view-customer/view-customer.component';
+import { UpdateCustomerComponent } from './abbegate/update-customer/update-customer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:'trackandtrace',component: TrackAndTraceComponent},
   {path:'abbegate/profile', component: UserProfileComponent},
   {path:'abbegate/newCustomer',component: NewCustomerComponent},
-  {path:'abbegate/viewCustomer', component: ViewCustomerComponent}
+  {path:'abbegate/viewCustomer', component: ViewCustomerComponent},
+  {path:'abbegate/updateCustomer/:id', component: UpdateCustomerComponent}
 ];
 
 @NgModule({

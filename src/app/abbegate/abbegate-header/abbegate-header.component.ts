@@ -89,6 +89,20 @@ export class AbbegateHeaderComponent {
               ]
           },
           {
+            label: 'Studio',
+            icon: 'pi pi-fw pi-calendar',
+            items: [
+                {
+                    label: 'Live',
+                    icon: 'pi pi-fw pi-pencil',
+                },
+                {
+                    label: 'View',
+                    icon: 'pi pi-fw pi-calendar-times',
+                }
+            ]
+        },
+          {
               label: 'Users',
               icon: 'pi pi-fw pi-user',
               items: [
@@ -99,36 +113,6 @@ export class AbbegateHeaderComponent {
                   }
               ]
           },
-          // {
-          //     label: 'Events',
-          //     icon: 'pi pi-fw pi-calendar',
-          //     items: [
-          //         {
-          //             label: 'Edit',
-          //             icon: 'pi pi-fw pi-pencil',
-          //             items: [
-          //                 {
-          //                     label: 'Save',
-          //                     icon: 'pi pi-fw pi-calendar-plus'
-          //                 },
-          //                 {
-          //                     label: 'Delete',
-          //                     icon: 'pi pi-fw pi-calendar-minus'
-          //                 }
-          //             ]
-          //         },
-          //         {
-          //             label: 'Archieve',
-          //             icon: 'pi pi-fw pi-calendar-times',
-          //             items: [
-          //                 {
-          //                     label: 'Remove',
-          //                     icon: 'pi pi-fw pi-calendar-minus'
-          //                 }
-          //             ]
-          //         }
-          //     ]
-          // },
           {
               label: 'Log out',
               icon: 'pi pi-fw pi-power-off',

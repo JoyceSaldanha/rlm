@@ -28,6 +28,9 @@ import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
+import { FieldsetModule } from 'primeng/fieldset';
+import { UpdateCustomerComponent } from './abbegate/update-customer/update-customer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { MessageService } from 'primeng/api';
     UserProfileComponent,
     AbbegateHeaderComponent,
     NewCustomerComponent,
-    ViewCustomerComponent
+    ViewCustomerComponent,
+    UpdateCustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,9 @@ import { MessageService } from 'primeng/api';
     CheckboxModule,
     TableModule,
     MultiSelectModule,
-    ToastModule
+    ToastModule,
+    DialogModule,
+    FieldsetModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

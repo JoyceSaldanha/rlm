@@ -1,10 +1,10 @@
 <app-abbegate-header></app-abbegate-header>
 <div class="container">
   <form class="form-container" [formGroup]="customerForm">
-    <h3 style="text-align: center">New Customer Form</h3>
+    <h3 style="text-align: center">Edit Customer Form</h3>
 
     <div>
-      <p-fieldset legend="Company Details" [toggleable]="false">
+      <p-fieldset legend="Company Details">
         <div class="company-container">
           <!-- Personal Info form - name, email, phone -->
           <div class="form-group" formGroupName="companyInfo">
@@ -125,7 +125,7 @@
       <p-fieldset legend="Contact Details">
         <div class="contact-container" formArrayName="contactInfo">
           <div
-            *ngFor="let contact of contactInfo?.controls; let i = index"
+            *ngFor="let contact of contactInfoData; let i = index"
             [formGroupName]="i"
             class="contact-item"
           >
@@ -176,22 +176,20 @@
 
             <div class="action-buttons">
               <button
-                *ngIf="contactInfo.controls.length > 1"
                 type="button"
                 class="p-button-danger"
                 pButton
                 pRipple
                 icon="pi pi-minus-circle"
-                (click)="removeContactInfo(i)"
+                (click)="removeContact(i)"
               ></button>
               <button
-                *ngIf="i === contactInfo.controls.length - 1"
                 type="button"
                 class="p-button-success"
                 pButton
                 pRipple
                 icon="pi pi-plus-circle"
-                (click)="addContactInfo()"
+                (click)="addContact()"
               ></button>
             </div>
           </div>
@@ -203,17 +201,10 @@
         <button
           pButton
           pRipple
-          label="Save"
+          label="Update"
           class="p-button-success"
-          (click)="saveCustomerDetails()"
         ></button>
-        <button
-          pButton
-          pRipple
-          label="Cancel"
-          class="p-button-danger"
-          (click)="clearCustomerForm()"
-        ></button>
+        <button pButton pRipple label="Cancel" class="p-button-danger"></button>
       </div>
     </div>
   </form>

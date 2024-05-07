@@ -23,15 +23,6 @@ export class ConnectionService {
   }
 
   getLoggedInUserDetails(userId: number): Observable<any> {
-    return this.http.get('http://localhost/loginDetails.php?id=${userId}');
+    return this.http.get(`http://localhost/loginDetails.php?id=${userId}`);
   }
-
-  setCustomerDetails(data:any): Observable<any> {
-    return this.http.post('http://localhost/customer.php',data,{responseType:'json'});
-  }
-
-  getCustomerDetails(): Observable<any> {
-    return this.http.get('http://localhost/viewCustomerDetails.php');
-  }
-
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ConnectionService } from '../../service/connection.service';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { CustomerService } from '../../service/customer.service';
 
 @Component({
   selector: 'app-new-customer',
@@ -10,13 +10,15 @@ import { MessageService } from 'primeng/api';
   styleUrl: './new-customer.component.css'
 })
 export class NewCustomerComponent implements OnInit {
-  selectedFiles: File[] = [];
   groups: any;
   category: any;
+  status: any;
   customerForm !: FormGroup;
   customerData: any;
+  contactInfo: FormArray;
 
-  constructor(private fb: FormBuilder, private service: ConnectionService,private router: Router,private messageService: MessageService) {
+  constructor(private fb: FormBuilder, private customerService: CustomerService,private router: Router,private messageService: MessageService) {
+    this.contactInfo = this.fb.array([this.createContactInfo()]);
   }
 
   ngOnInit() {
@@ -33,53 +35,68 @@ export class NewCustomerComponent implements OnInit {
       { name: 'Accounts'}
   ];
 
+this.status = [
+        { name: 'Customer' },
+        { name: 'Prospect' },
+        { name: 'Trash'}
+    ];
+
     this.customerForm = this.fb.group({
-      personalInfo: this.fb.group({
-        name: [''],
-        email: [''],
-        phoneNumber: ['']
-      }),
-      addressInfo: this.fb.group({
+      companyInfo: this.fb.group({
+        companyName: [''],
+        companyEmail: [''],
+        companyPhoneNumber: [''],
         address: [''],
         city: [''],
         country: [''],
-        zipCode: ['']
+        zipCode: [''],
+        group: [''],
+        sales: [''],
+        status: [''],
       }),
-      group: [''],
+      contactInfo: this.contactInfo
+    });
+  }
+
+  createContactInfo(): FormGroup {
+    return this.fb.group({
+      contactName: [''],
+      contactEmail: [''],
+      contactPhoneNumber: [''],
       category: ['']
     });
   }
 
-onFileSelected(event: any): void {
-  if (event.target.files) {
-    for (let i = 0; i < event.target.files.length; i++) {
-      const file: File = event.target.files[i];
-      this.selectedFiles.push(file);
-    }
-  } 
-}
-
-unSelectFile(file: File): void {
-  const index = this.selectedFiles.indexOf(file);
-  if (index !== -1) {
-    this.selectedFiles.splice(index, 1);
+  addContactInfo(): void {
+    const contactInfo = this.customerForm.get('contactInfo') as FormArray;
+    contactInfo.push(this.createContactInfo());
   }
-}
+
+  removeContactInfo(index: number): void {
+    const contactInfo = this.customerForm.get('contactInfo') as FormArray;
+    contactInfo.removeAt(index);
+  }
+
 
 saveCustomerDetails(): void {
-  console.log(this.customerForm.getRawValue())
   const data = this.customerForm.getRawValue();
-  this.service.setCustomerDetails(data).subscribe(response => {
-    this.customerData = data;
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Customer created successfully',
-      life: 3000 // Adjust the toast display duration as needed
-    });
-    this.customerForm.reset();
-    setTimeout(() => {
-      this.router.navigate(['/abbegate/viewCustomer']);
-    },1000); 
+  this.customerService.saveCustomerForm(data).subscribe((response: any) => {
+    if(response.success == true) {
+      this.messageService.add({
+            severity: 'success',
+            summary: 'Customer created successfully',
+            life: 3000 // Adjust the toast display duration as needed
+          });
+      this.customerForm.reset();
+      setTimeout(() => {
+            this.router.navigate(['/abbegate/viewCustomer']);
+          },1000);
+    }
   });
 }
+
+clearCustomerForm(): void {
+  this.customerForm.reset();
+}
+
 }
