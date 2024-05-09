@@ -176,6 +176,7 @@
 
             <div class="action-buttons">
               <button
+                *ngIf="contactInfoData.length > 0"
                 type="button"
                 class="p-button-danger"
                 pButton
@@ -184,6 +185,10 @@
                 (click)="removeContact(i)"
               ></button>
               <button
+                *ngIf="
+                  contactInfoData.length === 1 ||
+                  i === contactInfoData.length - 1
+                "
                 type="button"
                 class="p-button-success"
                 pButton
@@ -203,6 +208,7 @@
           pRipple
           label="Update"
           class="p-button-success"
+          (click)="updateCustomerForm()"
         ></button>
         <button pButton pRipple label="Cancel" class="p-button-danger"></button>
       </div>

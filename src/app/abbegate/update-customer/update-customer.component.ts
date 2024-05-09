@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../../service/customer.service';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-update-customer',
@@ -17,8 +18,9 @@ export class UpdateCustomerComponent {
   category: any;
   status: any;
   contactInfoData: any[] = [];
+// contactInfoControls: any;
 
-  constructor(private route: ActivatedRoute, private service: CustomerService,private formBuilder: FormBuilder) {
+  constructor(private route: ActivatedRoute, private service: CustomerService,private formBuilder: FormBuilder,private router: Router,private messageService: MessageService) {
     this.customerForm = this.formBuilder.group({
       companyInfo: this.formBuilder.group({
         companyName: '',
@@ -104,25 +106,53 @@ populateForm(): void {
 
 addContact(): void {
   const contactInfoArray = this.customerForm.get('contactInfo') as FormArray;
-  contactInfoArray.push(this.createContactGroup());
-}
+  const newContactGroup = this.createContactGroup();
+  contactInfoArray.push(newContactGroup);
 
+  // Update the contactInfoData array
+  this.contactInfoData.push({
+    contactName: '',
+    contactEmail: '',
+    contactPhoneNumber: '',
+    category: []
+  });
+}
 
 removeContact(index: number): void {
-  console.log(index)
   const contactInfoArray = this.customerForm.get('contactInfo') as FormArray;
-  contactInfoArray.removeAt(index);
+  if (contactInfoArray) {
+    contactInfoArray.removeAt(index);
+    this.contactInfoData.splice(index, 1);
+  }
 }
 
-
-// Helper method to create a contact FormGroup
 createContactGroup(): FormGroup {
   return this.formBuilder.group({
-    contactName: [''],
-    contactEmail: [''],
-    contactPhoneNumber: [''],
-    category: [''] // Set an empty array for category
+    contactName: '',
+    contactEmail: '',
+    contactPhoneNumber: '',
+    category: ['']
   });
+}
+
+updateCustomerForm() {
+  const data = {
+    ...this.customerForm.value,
+    id: this.customerId
+  };
+  this.service.updateCompanyData(data).subscribe((response: any) => {
+    if(response.success == true) {
+      this.messageService.add({
+            severity: 'success',
+            summary: 'Customer created successfully',
+            life: 3000 // Adjust the toast display duration as needed
+          });
+      this.customerForm.reset();
+      setTimeout(() => {
+            this.router.navigate(['/abbegate/viewCustomer']);
+          },1000);
+    }
+  })
 }
 
 }

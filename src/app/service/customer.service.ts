@@ -34,7 +34,6 @@ export class CustomerService {
   }
 
   deleteCompanyData(companyId: number): Observable<any> {
-    console.log(companyId)
     return this.http.post('http://localhost/deleteCompanyContactDetails.php',{id: companyId},{responseType:'json'});
   }
 
