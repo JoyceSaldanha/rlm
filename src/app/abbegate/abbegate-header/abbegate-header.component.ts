@@ -71,6 +71,24 @@ export class AbbegateHeaderComponent {
                         routerLink: ['/abbegate/viewCustomer']
                     }
                   ]
+                },
+                {
+                    separator: true
+                },
+                {
+                  label: 'Supplier',
+                  icon: 'pi pi-users',
+                  items: [
+                    {
+                        label:'Create',
+                        icon: 'pi pi-user-plus',
+                        routerLink: ['/abbegate/newSupplier']
+                    },{
+                        label:'View',
+                        icon: 'pi pi-user',
+                        routerLink: ['/abbegate/viewSupplier']
+                    }
+                  ]
                 }
               ]
           },
@@ -80,7 +98,16 @@ export class AbbegateHeaderComponent {
               items: [
                   {
                       label: 'Product',
-                      icon: 'pi pi-fw pi-align-left'
+                      icon: 'pi pi-fw pi-align-left',
+                      items : [{
+                        label: 'Create',
+                        icon:'pi pi-pencil',
+                        routerLink: ['/abbegate/newProduct']
+                  },{
+                    label:'View',
+                    icon:'pi pi-user',
+                    routerLink: ['/abbegate/viewProduct']
+                  }]
                   },
                   {
                       label: 'Stock entries',

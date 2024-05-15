@@ -1,6 +1,6 @@
 <app-abbegate-header></app-abbegate-header>
-<div class="container">
-  <form class="form-container" [formGroup]="customerForm">
+<div>
+  <form [formGroup]="customerForm">
     <h3 style="text-align: center">New Customer Form</h3>
 
     <div>
@@ -123,7 +123,7 @@
 
     <div class="top">
       <p-fieldset legend="Contact Details">
-        <div class="contact-container" formArrayName="contactInfo">
+        <div formArrayName="contactInfo">
           <div
             *ngFor="let contact of contactInfo?.controls; let i = index"
             [formGroupName]="i"

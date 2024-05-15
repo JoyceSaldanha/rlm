@@ -14,6 +14,11 @@ export class ViewCustomerComponent {
   editData: any;
   groups: any;
   category: any;
+  firstIndex: number = 0;
+  rows: number = 10;
+  totalRecordsCount: number = 0;
+  showSearchFields: boolean = false;
+  inputValue: string = '';
 
   customerFormData: any;
   constructor(private customerService: CustomerService,private messageService: MessageService, private router: Router) {
@@ -38,61 +43,10 @@ export class ViewCustomerComponent {
 ];
   }
 
-  // getDetails() {
-  //   this.customerService.getCustomerDetails().subscribe(data => {
-  //     this.customerDetails = data;
-  //   });
-  // }
-
-//   deleteRow(rowData: any): void {
-// console.log(rowData)
-//     // this.customerDetails.splice(rowData.id, 1);
-//     // this.customerService.deleteCustomer(rowData.id).subscribe( (response) => {
-//       //  this.getDetails();
-//       // });
-//     }
-
-    // editRowData(rowData: any): void {
-    //   if (rowData) {
-    //     this.editData = { ...rowData };
-    //     const selectedGroup = this.groups.find((group: any) => group.name === rowData.group_name);
-    // // Set the selected group object to editData
-    // this.editData.group_name = selectedGroup;
-    //     if (typeof rowData.category === 'string') {
-    //       // If category is provided as a string with comma-separated values
-    //       this.editData.category = rowData.category.split(',').map((categoryName: string) => categoryName.trim())
-    //         .map((categoryName: string) => this.category.find((category: any) => category.name === categoryName))
-    //         .filter((category: any) => category); // Remove undefined entries
-    //     } else {
-    //       const selectedCategory = this.category.find((category: any) => category.name === rowData.category);
-    //       this.editData.category = selectedCategory ? [selectedCategory] : [];
-    //     }
-    //     this.showEditDialog = true;
-    //   } else {
-    //     console.log("No data to edit");
-    //   }
-    // }
-    
-    // updateCustomerProfile(data: any): void {
-    //   console.log(data)
-    //   this.customerService.updateCustomer(data).subscribe((response) => {
-    //     if(response.success == true) {
-    //       this.messageService.add({
-    //         severity: 'success',
-    //         summary: 'Customer updated successfully',
-    //         life: 3000 // Adjust the toast display duration as needed
-    //       }); 
-    //       setTimeout(() => {
-    //         this.showEditDialog = false;
-    //         // this.getDetails();
-    //       },1000); 
-    //     }
-    //   });
-    // }
-
   getCustomerFormDetails(): void {
     this.customerService.getCustomerFormData().subscribe((response: any) => {
       this.customerFormData = response;
+      this.totalRecordsCount = this.customerFormData.companyData.length;
     })
   }
 
@@ -117,5 +71,22 @@ export class ViewCustomerComponent {
 
     closeDialog(): void {
       this.showEditDialog = false;
+    }
+
+    toggleSeachInput(): void {
+      this.showSearchFields = !this.showSearchFields;
+    }
+
+    search() {
+      if (!this.inputValue) {
+        this.getCustomerFormDetails();
+      } else {
+        // Filter the table data based on the searchText
+        this.filterTableData();
+      }
+    }
+
+    filterTableData() {
+      this.customerFormData.companyData = this.customerFormData.companyData.filter((profile: any) => profile.companyName.toLowerCase().includes(this.inputValue));
     }
 }

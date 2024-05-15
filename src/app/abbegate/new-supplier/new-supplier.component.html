@@ -1,0 +1,83 @@
+<app-abbegate-header></app-abbegate-header>
+<div>
+  <form>
+    <div>
+      <h3 style="text-align: center">New Supplier Form</h3>
+      <p-fieldset legend="New Supplier">
+        <div class="supplier-container">
+          <p-floatLabel>
+            <input pInputText id="name" />
+            <label for="name">Name</label>
+          </p-floatLabel>
+          <p-floatLabel>
+            <input pInputText id="email" />
+            <label for="email">Email</label>
+          </p-floatLabel>
+          <p-floatLabel>
+            <input pInputText id="address" />
+            <label for="address">Address</label>
+          </p-floatLabel>
+          <p-floatLabel>
+            <input pInputText id="zipcode" />
+            <label for="zipcode">Zip Code</label>
+          </p-floatLabel>
+          <p-floatLabel>
+            <input pInputText id="contact" />
+            <label for="contact">Contact Number</label>
+          </p-floatLabel>
+          <p-floatLabel>
+            <input pInputText id="info" />
+            <label for="info">Additional Info (Optional)</label>
+          </p-floatLabel>
+        </div>
+
+        <div class="checkbox-input">
+          <p-checkbox value="subcontractor" inputId="sc" />
+          <label for="sc"> This supplier is a Subcontractor</label>
+        </div>
+      </p-fieldset>
+    </div>
+
+    <div class="top">
+      <p-fieldset legend="Contact Details">
+        <div class="contact-container">
+          <p-floatLabel>
+            <input id="name" type="text" pInputText />
+            <label for="name">Name</label>
+          </p-floatLabel>
+
+          <p-floatLabel>
+            <input id="email" type="email" pInputText />
+            <label for="email">Email</label>
+          </p-floatLabel>
+
+          <p-floatLabel>
+            <input id="phone" type="text" pInputText />
+            <label for="phone">Phone number</label>
+          </p-floatLabel>
+
+          <div class="plus-minus-buttons">
+            <button
+              type="button"
+              class="p-button-danger"
+              pButton
+              pRipple
+              icon="pi pi-minus-circle"
+            ></button>
+            <button
+              type="button"
+              class="p-button-success"
+              pButton
+              pRipple
+              icon="pi pi-plus-circle"
+            ></button>
+          </div>
+        </div>
+      </p-fieldset>
+    </div>
+  </form>
+  <div class="action-buttons">
+    <button pButton pRipple label="Create" class="p-button-success"></button>
+    <button pButton pRipple label="Cancel" class="p-button-danger"></button>
+  </div>
+</div>

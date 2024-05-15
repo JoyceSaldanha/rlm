@@ -1,0 +1,21 @@
+.container {
+    padding: 2rem;
+    width: 100vw;
+}
+.new-product-container {
+
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: fit-content;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem
+}

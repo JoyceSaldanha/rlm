@@ -1,0 +1,50 @@
+<app-abbegate-header></app-abbegate-header>
+<div class="container">
+  <p-fieldset legend="New Product">
+    <div class="new-product-container">
+      <div class="input-container">
+        <p-dropdown
+          [options]="groups"
+          optionLabel="name"
+          placeholder="Select a Group"
+        />
+        <p-dropdown
+          [options]="department"
+          optionLabel="name"
+          placeholder="Select a Department"
+        />
+        <p-floatLabel>
+          <input id="stockno" type="text" pInputText />
+          <label for="stockno">Stock number</label>
+        </p-floatLabel>
+        <p-floatLabel>
+          <input id="desc" type="text" pInputText />
+          <label for="desc">Description</label>
+        </p-floatLabel>
+        <p-floatLabel>
+          <input id="clr" type="text" pInputText />
+          <label for="clr">Color</label>
+        </p-floatLabel>
+        <p-dropdown
+          [options]="supplier"
+          optionLabel="name"
+          placeholder="Select a Supplier"
+        />
+        <p-floatLabel>
+          <input id="supplierRef" type="text" pInputText />
+          <label for="supplierRef">Supplier Reference</label>
+        </p-floatLabel>
+      </div>
+      <div class="action-buttons">
+        <button
+          pButton
+          pRipple
+          label="Create"
+          class="p-button-success"
+        ></button>
+
+        <button pButton pRipple label="Cancel" class="p-button-danger"></button>
+      </div>
+    </div>
+  </p-fieldset>
+</div>

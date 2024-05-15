@@ -1,20 +1,7 @@
-.container {
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-
-  .form-container {
-    margin: 1rem;
-    /* border: 2px solid #ccc; */
-    border-radius: 10px;
-    display: grid;
-    justify-content: center;
-  }
-
   .form-group {
     margin-bottom: 1.5rem;
+    width: calc(50% - 10px);
+    margin-right: 10px;
   }
 
   .category {
@@ -39,12 +26,6 @@
     gap: 1rem;
   }
 
-  .contact-container {
-    /* display: grid;
-    grid-template-columns: repeat(5,1fr);
-    gap: 1rem; */
-  }
-
   .contact-item {
     display: flex;
     gap: 1rem;
@@ -57,4 +38,14 @@
   
   .contact-details-container {
     margin-top: 1rem;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .company-container {
+      grid-template-columns: 1fr; 
+    }
+  
+    .contact-item {
+      flex-direction: column; 
+    }
   }

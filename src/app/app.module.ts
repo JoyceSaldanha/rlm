@@ -31,6 +31,10 @@ import { MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { FieldsetModule } from 'primeng/fieldset';
 import { UpdateCustomerComponent } from './abbegate/update-customer/update-customer.component';
+import { NewProductComponent } from './abbegate/new-product/new-product.component';
+import { ViewProductComponent } from './abbegate/view-product/view-product.component';
+import { NewSupplierComponent } from './abbegate/new-supplier/new-supplier.component';
+import { ViewSupplierComponent } from './abbegate/view-supplier/view-supplier.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { UpdateCustomerComponent } from './abbegate/update-customer/update-custo
     AbbegateHeaderComponent,
     NewCustomerComponent,
     ViewCustomerComponent,
-    UpdateCustomerComponent
+    UpdateCustomerComponent,
+    NewProductComponent,
+    ViewProductComponent,
+    NewSupplierComponent,
+    ViewSupplierComponent
   ],
   imports: [
     BrowserModule,

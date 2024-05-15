@@ -1,0 +1,29 @@
+.supplier-container {
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+}
+
+.checkbox-input {
+    margin-top: 2rem;
+}
+
+.action-buttons{
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem; 
+    justify-content: center;
+}
+
+.contact-container {
+    display: flex;
+    gap: 3rem;
+}
+
+.plus-minus-buttons {
+    display: contents;
+}
+
+.top {
+    margin-top: 2rem;
+}

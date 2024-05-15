@@ -1,37 +1,12 @@
 <app-abbegate-header></app-abbegate-header>
 <h2 style="text-align: center">Company Details</h2>
 
-<!-- <p-table [value]="customerFormData" [tableStyle]="{ 'min-width': '50rem' }">
-  <ng-template pTemplate="header">
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Country</th>
-      <th>Group Name</th>
-      <th>Category</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-customerDetails>
-    <tr>
-      <td>{{ customerDetails.name }}</td>
-      <td>{{ customerDetails.email }}</td>
-      <td>{{ customerDetails.country }}</td>
-      <td>{{ customerDetails.group_name }}</td>
-      <td>{{ customerDetails.category }}</td>
-      <td class="icon-cell" (click)="editRowData(customerDetails)">
-        <span class="pi pi-pencil"></span>
-      </td>
-      <td class="icon-cell" (click)="deleteRow(customerDetails)">
-        <span class="pi pi-trash"></span>
-      </td>
-    </tr>
-  </ng-template>
-</p-table> -->
-
 <p-table
+  (onFilter)="search()"
   [value]="customerFormData?.companyData"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[10, 20]"
   [tableStyle]="{ 'min-width': '50rem' }"
 >
   <ng-template pTemplate="header">
@@ -41,6 +16,23 @@
       <th>Country</th>
       <th>Zip Code</th>
       <th>Group</th>
+      <th><span class="pi pi-search" (click)="toggleSeachInput()"></span></th>
+      <th></th>
+    </tr>
+    <tr *ngIf="showSearchFields">
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Name"
+          [(ngModel)]="inputValue"
+          (keyup.enter)="search()"
+        />
+      </th>
+      <th><input type="text" pInputText placeholder="Email" /></th>
+      <th><input type="text" pInputText placeholder="Country" /></th>
+      <th><input type="text" pInputText placeholder="Zip Code" /></th>
+      <th><input type="text" pInputText placeholder="Group" /></th>
       <th></th>
       <th></th>
     </tr>
@@ -64,104 +56,5 @@
     </tr>
   </ng-template>
 </p-table>
-
-<!-- <p-dialog
-  header="Edit Customer Profile"
-  [(visible)]="showEditDialog"
-  [maximizable]="true"
->
-  <span class="p-text-secondary block mb-5">Update customer information.</span>
-  <div *ngIf="editData" style="display: table-caption">
-    <div class="input-container">
-      <label for="name">Name</label>
-      <input id="name" type="text" pInputText [(ngModel)]="editData.name" />
-    </div>
-
-    <div class="input-container">
-      <label for="email">Email</label>
-      <input id="email" type="text" pInputText [(ngModel)]="editData.email" />
-    </div>
-
-    <div class="input-container">
-      <label for="address">Address</label>
-      <input
-        id="address"
-        type="text"
-        pInputText
-        [(ngModel)]="editData.address"
-      />
-    </div>
-
-    <div class="input-container">
-      <label for="city">City</label>
-      <input id="city" type="text" pInputText [(ngModel)]="editData.city" />
-    </div>
-
-    <div class="input-container">
-      <label for="country">Country</label>
-      <input
-        id="country"
-        type="text"
-        pInputText
-        [(ngModel)]="editData.country"
-      />
-    </div>
-
-    <div class="input-container">
-      <label for="zip">Zip Code</label>
-      <input id="zip" type="text" pInputText [(ngModel)]="editData.zip_code" />
-    </div>
-
-    <div class="input-container">
-      <label for="phone">Phone Number</label>
-      <input
-        id="phone"
-        type="text"
-        pInputText
-        [(ngModel)]="editData.phone_number"
-      />
-    </div>
-
-    <div class="input-container">
-      <div style="display: grid">
-        <label for="group">Group Name</label>
-        <p-dropdown
-          [options]="groups"
-          optionLabel="name"
-          placeholder="Select a Group"
-          [(ngModel)]="editData.group_name"
-        ></p-dropdown>
-      </div>
-    </div>
-
-    <div class="input-container">
-      <div style="display: grid">
-        <label for="category">Category</label>
-        <p-multiSelect
-          placeholder="Select a Category"
-          [options]="category"
-          optionLabel="name"
-          [(ngModel)]="editData.category"
-        ></p-multiSelect>
-      </div>
-    </div>
-  </div>
-  <div class="action-buttons">
-    <button
-      pButton
-      pRipple
-      label="Save"
-      class="p-button-success"
-      (click)="updateCustomerProfile(editData)"
-    ></button>
-    <button
-      pButton
-      pRipple
-      label="Cancel"
-      class="p-button-danger"
-      (click)="closeDialog()"
-    ></button>
-  </div>
-</p-dialog> -->
 
 <p-toast></p-toast>
