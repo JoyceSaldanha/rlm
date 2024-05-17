@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CustomerService } from '../../service/customer.service';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,7 +25,7 @@ export class ViewCustomerComponent {
   group: string = '';
 
   customerFormData: any;
-  constructor(private customerService: CustomerService,private messageService: MessageService, private router: Router) {
+  constructor(private customerService: CustomerService,private messageService: MessageService, private router: Router,private confirmationService: ConfirmationService) {
 
   }
 
@@ -54,7 +54,25 @@ export class ViewCustomerComponent {
     })
   }
 
-  deleteCustomer(data: any): void {
+  deleteCustomer(event: any, data:any): void {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Are you sure that you want to delete?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      acceptIcon:"none",
+      rejectIcon:"none",
+      rejectButtonStyleClass:"p-button-text",
+      accept: () => {
+          this.deleteConfirmCustomer(data);
+      },
+      reject: () => {
+          this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+      }
+  });
+  }
+
+  deleteConfirmCustomer(data:any){
     this.customerService.deleteCompanyData(data.id).subscribe((response: any) => {
       if(response.success == true) {
         this.messageService.add({

@@ -27,7 +27,7 @@ import { ViewCustomerComponent } from './abbegate/view-customer/view-customer.co
 import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { FieldsetModule } from 'primeng/fieldset';
 import { UpdateCustomerComponent } from './abbegate/update-customer/update-customer.component';
@@ -36,6 +36,7 @@ import { ViewProductComponent } from './abbegate/view-product/view-product.compo
 import { NewSupplierComponent } from './abbegate/new-supplier/new-supplier.component';
 import { ViewSupplierComponent } from './abbegate/view-supplier/view-supplier.component';
 import { UpdateSupplierComponent } from './abbegate/update-supplier/update-supplier.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -76,9 +77,10 @@ import { UpdateSupplierComponent } from './abbegate/update-supplier/update-suppl
     MultiSelectModule,
     ToastModule,
     DialogModule,
-    FieldsetModule
+    FieldsetModule,
+    ConfirmDialogModule
   ],
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

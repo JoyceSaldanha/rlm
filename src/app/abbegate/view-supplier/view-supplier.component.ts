@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SupplierService } from '../../service/supplier.service';
 import { __values } from 'tslib';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class ViewSupplierComponent implements OnInit{
   phoneNumber:any;
   subcontractor: any;
 
-  constructor(private service: SupplierService, private messageService: MessageService, private router: Router) {
+  constructor(private service: SupplierService, private confirmationService: ConfirmationService,private messageService: MessageService, private router: Router) {
 
   }
 
@@ -60,6 +60,24 @@ export class ViewSupplierComponent implements OnInit{
       );
     });
   }
+
+deleteConfirmSupplier(event :any, id:number){
+  this.confirmationService.confirm({
+    target: event.target as EventTarget,
+    message: 'Are you sure that you want to delete?',
+    header: 'Confirmation',
+    icon: 'pi pi-exclamation-triangle',
+    acceptIcon:"none",
+    rejectIcon:"none",
+    rejectButtonStyleClass:"p-button-text",
+    accept: () => {
+        this.deleteSupplierDetails(id);
+    },
+    reject: () => {
+        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+    }
+});
+}
 
   deleteSupplierDetails(id: number): void {
     this.service.deleteSupplierDetails(id).subscribe((response: any) => {

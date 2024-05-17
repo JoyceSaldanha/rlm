@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { SupplierService } from '../../service/supplier.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class UpdateSupplierComponent implements OnInit{
   contactInfoData: any[] = []
   contactInfo: FormArray;
 
-  constructor(private service: SupplierService,private route: ActivatedRoute,private formBuilder: FormBuilder, private router: Router,private messageService: MessageService) {
+  constructor(private service: SupplierService,private confirmationService: ConfirmationService,private route: ActivatedRoute,private formBuilder: FormBuilder, private router: Router,private messageService: MessageService) {
     this.supplierForm = this.formBuilder.group({
       supplierInfo: this.formBuilder.group({
         supplierName: '',
@@ -99,6 +99,24 @@ export class UpdateSupplierComponent implements OnInit{
       }
     }
 
+updateConfirmSupplier(event:any):void{
+  this.confirmationService.confirm({
+    target: event.target as EventTarget,
+    message: 'Are you sure that you want to Update?',
+    header: 'Confirmation',
+    icon: 'pi pi-exclamation-triangle',
+    acceptIcon:"none",
+    rejectIcon:"none",
+    rejectButtonStyleClass:"p-button-text",
+    accept: () => {
+        this.updateSupplierForm();
+    },
+    reject: () => {
+        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+    }
+});
+
+}
     updateSupplierForm() {
       const data = {
         ...this.supplierForm.value,

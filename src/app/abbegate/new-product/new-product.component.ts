@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-new-product',
@@ -9,6 +10,10 @@ export class NewProductComponent {
   groups: any;
   department: any;
   supplier:any;
+
+  constructor(private service: ProductService) {
+
+  }
     ngOnInit() {
       this.department=[
         {name:'General Stock Optional Extra'},
@@ -40,6 +45,13 @@ export class NewProductComponent {
             { name: 'Sundry Item' },
             { name: 'Special' }
         ];
+
+        this.getSupplierNames();
     }
 
+    getSupplierNames(): void {
+      this.service.getSupplierNames().subscribe((response: any) => {
+        this.supplier = response.supplierName;
+      })
+    }
 }

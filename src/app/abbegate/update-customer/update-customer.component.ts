@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../../service/customer.service';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-update-customer',
@@ -20,7 +20,7 @@ export class UpdateCustomerComponent {
   contactInfoData: any[] = [];
 // contactInfoControls: any;
 
-  constructor(private route: ActivatedRoute, private service: CustomerService,private formBuilder: FormBuilder,private router: Router,private messageService: MessageService) {
+  constructor(private route: ActivatedRoute, private confirmationService: ConfirmationService, private service: CustomerService,private formBuilder: FormBuilder,private router: Router,private messageService: MessageService) {
     this.customerForm = this.formBuilder.group({
       companyInfo: this.formBuilder.group({
         companyName: '',
@@ -135,6 +135,24 @@ createContactGroup(): FormGroup {
   });
 }
 
+updateConfirmCustomer(event:any):void{
+  this.confirmationService.confirm({
+    target: event.target as EventTarget,
+    message: 'Are you sure that you want to Update?',
+    header: 'Confirmation',
+    icon: 'pi pi-exclamation-triangle',
+    acceptIcon:"none",
+    rejectIcon:"none",
+    rejectButtonStyleClass:"p-button-text",
+    accept: () => {
+        this.updateCustomerForm();
+    },
+    reject: () => {
+        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+    }
+});
+
+}
 updateCustomerForm() {
   const data = {
     ...this.customerForm.value,

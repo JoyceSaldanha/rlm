@@ -93,11 +93,14 @@
           (click)="editSupplierDetails(supplierDetails)"
         ></span>
       </td>
-      <td class="icon-cell" (click)="deleteSupplierDetails(supplierDetails.id)">
+      <td
+        class="icon-cell"
+        (click)="deleteConfirmSupplier($event, supplierDetails.id)"
+      >
         <span class="pi pi-trash"></span>
       </td>
     </tr>
   </ng-template>
 </p-table>
-
+<p-confirmDialog />
 <p-toast></p-toast>
