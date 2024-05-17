@@ -1,2 +1,103 @@
 <app-abbegate-header></app-abbegate-header>
-<p>view-supplier works!</p>
+<h2 style="text-align: center">Supplier Details</h2>
+
+<p-table
+  (onFilter)="search('')"
+  [value]="supplierFormData?.supplierData"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[10, 20]"
+  [tableStyle]="{ 'min-width': '50rem' }"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Supplier Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Zip Code</th>
+      <th>Phone Number</th>
+      <th>Subcontractor</th>
+      <th><span class="pi pi-search" (click)="toggleSeachInput()"></span></th>
+      <th></th>
+    </tr>
+    <tr *ngIf="showSearchFields">
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Name"
+          [(ngModel)]="name"
+          (keyup.enter)="search(name)"
+        />
+      </th>
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Email"
+          [(ngModel)]="email"
+          (keyup.enter)="search(email)"
+        />
+      </th>
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Address"
+          [(ngModel)]="address"
+          (keyup.enter)="search(address)"
+        />
+      </th>
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Zip Code"
+          [(ngModel)]="zipcode"
+          (keyup.enter)="search(zipcode)"
+        />
+      </th>
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Phone number"
+          [(ngModel)]="phoneNumber"
+          (keyup.enter)="search(phoneNumber)"
+        />
+      </th>
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Subcontractor"
+          [(ngModel)]="subcontractor"
+          (keyup.enter)="search(subcontractor)"
+        />
+      </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-supplierDetails>
+    <tr>
+      <td>{{ supplierDetails.name }}</td>
+      <td>{{ supplierDetails.email }}</td>
+      <td>{{ supplierDetails.address }}</td>
+      <td>{{ supplierDetails.zip_code }}</td>
+      <td>{{ supplierDetails.contact_number }}</td>
+      <td>{{ supplierDetails.subcontractor == 1 ? "Yes" : "No" }}</td>
+      <td class="icon-cell">
+        <span
+          class="pi pi-pencil"
+          (click)="editSupplierDetails(supplierDetails)"
+        ></span>
+      </td>
+      <td class="icon-cell" (click)="deleteSupplierDetails(supplierDetails.id)">
+        <span class="pi pi-trash"></span>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-toast></p-toast>

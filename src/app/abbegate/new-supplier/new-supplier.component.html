@@ -1,83 +1,119 @@
 <app-abbegate-header></app-abbegate-header>
 <div>
-  <form>
-    <div>
-      <h3 style="text-align: center">New Supplier Form</h3>
+  <form [formGroup]="supplierForm">
+    <h3 style="text-align: center">New Supplier Form</h3>
+    <div formGroupName="supplierInfo">
       <p-fieldset legend="New Supplier">
         <div class="supplier-container">
           <p-floatLabel>
-            <input pInputText id="name" />
+            <input pInputText id="name" formControlName="supplierName" />
             <label for="name">Name</label>
           </p-floatLabel>
           <p-floatLabel>
-            <input pInputText id="email" />
+            <input pInputText id="email" formControlName="supplierEmail" />
             <label for="email">Email</label>
           </p-floatLabel>
           <p-floatLabel>
-            <input pInputText id="address" />
+            <input pInputText id="address" formControlName="supplierAddress" />
             <label for="address">Address</label>
           </p-floatLabel>
           <p-floatLabel>
-            <input pInputText id="zipcode" />
+            <input pInputText id="zipcode" formControlName="zipCode" />
             <label for="zipcode">Zip Code</label>
           </p-floatLabel>
           <p-floatLabel>
-            <input pInputText id="contact" />
+            <input pInputText id="contact" formControlName="phoneNumber" />
             <label for="contact">Contact Number</label>
           </p-floatLabel>
           <p-floatLabel>
-            <input pInputText id="info" />
+            <input pInputText id="info" formControlName="additionalInfo" />
             <label for="info">Additional Info (Optional)</label>
           </p-floatLabel>
-        </div>
 
-        <div class="checkbox-input">
-          <p-checkbox value="subcontractor" inputId="sc" />
-          <label for="sc"> This supplier is a Subcontractor</label>
+          <div>
+            <p-checkbox
+              inputId="sc"
+              formControlName="subContractor"
+              binary="true"
+            />
+            <label for="sc"> This supplier is a Subcontractor</label>
+          </div>
         </div>
       </p-fieldset>
     </div>
 
     <div class="top">
-      <p-fieldset legend="Contact Details">
-        <div class="contact-container">
-          <p-floatLabel>
-            <input id="name" type="text" pInputText />
-            <label for="name">Name</label>
-          </p-floatLabel>
+      <div formArrayName="supplierContactInfo">
+        <p-fieldset legend="Contact Details">
+          <div
+            class="contact-container"
+            *ngFor="let contact of supplierContactInfo.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <p-floatLabel>
+              <input
+                id="name"
+                type="text"
+                pInputText
+                formControlName="contactName"
+              />
+              <label for="name">Name</label>
+            </p-floatLabel>
 
-          <p-floatLabel>
-            <input id="email" type="email" pInputText />
-            <label for="email">Email</label>
-          </p-floatLabel>
+            <p-floatLabel>
+              <input
+                id="email"
+                type="email"
+                pInputText
+                formControlName="contactEmail"
+              />
+              <label for="email">Email</label>
+            </p-floatLabel>
 
-          <p-floatLabel>
-            <input id="phone" type="text" pInputText />
-            <label for="phone">Phone number</label>
-          </p-floatLabel>
+            <p-floatLabel>
+              <input
+                id="phone"
+                type="text"
+                pInputText
+                formControlName="contactPhoneNumber"
+              />
+              <label for="phone">Phone number</label>
+            </p-floatLabel>
 
-          <div class="plus-minus-buttons">
-            <button
-              type="button"
-              class="p-button-danger"
-              pButton
-              pRipple
-              icon="pi pi-minus-circle"
-            ></button>
-            <button
-              type="button"
-              class="p-button-success"
-              pButton
-              pRipple
-              icon="pi pi-plus-circle"
-            ></button>
+            <div class="plus-minus-buttons">
+              <button
+                *ngIf="supplierContactInfo.controls.length > 1"
+                type="button"
+                class="p-button-danger"
+                pButton
+                pRipple
+                icon="pi pi-minus-circle"
+                (click)="removeContactInfo(i)"
+              ></button>
+              <button
+                *ngIf="i === supplierContactInfo.controls.length - 1"
+                type="button"
+                class="p-button-success"
+                pButton
+                pRipple
+                icon="pi pi-plus-circle"
+                (click)="addContactInfo()"
+              ></button>
+            </div>
           </div>
-        </div>
-      </p-fieldset>
+        </p-fieldset>
+      </div>
     </div>
   </form>
   <div class="action-buttons">
-    <button pButton pRipple label="Create" class="p-button-success"></button>
+    <button
+      pButton
+      pRipple
+      label="Create"
+      class="p-button-success"
+      (click)="createSupplier()"
+    ></button>
     <button pButton pRipple label="Cancel" class="p-button-danger"></button>
   </div>
+  <p-toast></p-toast>
 </div>

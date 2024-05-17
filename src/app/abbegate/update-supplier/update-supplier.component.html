@@ -1,49 +1,36 @@
 <app-abbegate-header></app-abbegate-header>
 <div class="container">
-  <form class="form-container" [formGroup]="customerForm">
-    <h3 style="text-align: center">Edit Customer Form</h3>
+  <form class="form-container" [formGroup]="supplierForm">
+    <h3 style="text-align: center">Edit Supplier Form</h3>
 
     <div>
-      <p-fieldset legend="Company Details">
-        <div class="company-container">
-          <!-- Personal Info form - name, email, phone -->
-          <div class="form-group" formGroupName="companyInfo">
+      <p-fieldset legend="Supplier Details">
+        <div class="supplier-container">
+          <div class="form-group" formGroupName="supplierInfo">
             <p-floatLabel>
               <input
                 id="name"
                 type="text"
                 pInputText
-                formControlName="companyName"
+                formControlName="supplierName"
               />
               <label for="name">Name</label>
             </p-floatLabel>
           </div>
 
-          <div class="form-group" formGroupName="companyInfo">
+          <div class="form-group" formGroupName="supplierInfo">
             <p-floatLabel>
               <input
                 id="email"
                 type="email"
                 pInputText
-                formControlName="companyEmail"
+                formControlName="supplierEmail"
               />
               <label for="email">Email</label>
             </p-floatLabel>
           </div>
 
-          <div class="form-group" formGroupName="companyInfo">
-            <p-floatLabel>
-              <input
-                id="phone"
-                type="text"
-                pInputText
-                formControlName="companyPhoneNumber"
-              />
-              <label for="phone">Phone number</label>
-            </p-floatLabel>
-          </div>
-
-          <div class="form-group" formGroupName="companyInfo">
+          <div class="form-group" formGroupName="supplierInfo">
             <p-floatLabel>
               <input
                 id="address"
@@ -55,26 +42,7 @@
             </p-floatLabel>
           </div>
 
-          <div class="form-group" formGroupName="companyInfo">
-            <p-floatLabel>
-              <input id="city" type="text" pInputText formControlName="city" />
-              <label for="city">City</label>
-            </p-floatLabel>
-          </div>
-
-          <div class="form-group" formGroupName="companyInfo">
-            <p-floatLabel>
-              <input
-                id="country"
-                type="text"
-                pInputText
-                formControlName="country"
-              />
-              <label for="country">Country</label>
-            </p-floatLabel>
-          </div>
-
-          <div class="form-group" formGroupName="companyInfo">
+          <div class="form-group" formGroupName="supplierInfo">
             <p-floatLabel>
               <input
                 id="code"
@@ -86,36 +54,37 @@
             </p-floatLabel>
           </div>
 
-          <!-- group -->
-          <div class="form-group" formGroupName="companyInfo">
-            <p-dropdown
-              [options]="groups"
-              optionLabel="name"
-              placeholder="Select a Group"
-              formControlName="group"
-            ></p-dropdown>
-          </div>
-
-          <div class="form-group" formGroupName="companyInfo">
+          <div class="form-group" formGroupName="supplierInfo">
             <p-floatLabel>
               <input
-                id="sales_rep"
+                id="phone"
                 type="text"
                 pInputText
-                formControlName="sales"
+                formControlName="supplierPhoneNumber"
               />
-              <label for="sales_rep">Sales Rep</label>
+              <label for="phone">Phone number</label>
             </p-floatLabel>
           </div>
 
-          <!-- status -->
-          <div class="form-group" formGroupName="companyInfo">
-            <p-dropdown
-              [options]="status"
-              optionLabel="name"
-              placeholder="Select a Status"
-              formControlName="status"
-            ></p-dropdown>
+          <div class="form-group" formGroupName="supplierInfo">
+            <p-floatLabel>
+              <input
+                id="addInfo"
+                type="text"
+                pInputText
+                formControlName="additionalInfo"
+              />
+              <label for="addInfo">Additional Info</label>
+            </p-floatLabel>
+          </div>
+
+          <div formGroupName="supplierInfo">
+            <p-checkbox
+              inputId="sc"
+              formControlName="subContractor"
+              binary="true"
+            />
+            <label for="sc"> This supplier is a Subcontractor</label>
           </div>
         </div>
       </p-fieldset>
@@ -125,9 +94,9 @@
       <p-fieldset legend="Contact Details">
         <div class="contact-container" formArrayName="contactInfo">
           <div
-            *ngFor="let contact of contactInfoData; let i = index"
-            [formGroupName]="i"
             class="contact-item"
+            *ngFor="let contact of contactInfo.controls; let i = index"
+            [formGroupName]="i"
           >
             <div class="form-group">
               <p-floatLabel>
@@ -165,18 +134,9 @@
               </p-floatLabel>
             </div>
 
-            <div class="form-group category">
-              <p-multiSelect
-                placeholder="Select a Category"
-                [options]="category"
-                optionLabel="name"
-                formControlName="category"
-              ></p-multiSelect>
-            </div>
-
             <div class="action-buttons">
               <button
-                *ngIf="contactInfoData.length > 0"
+                *ngIf="contactInfo.length > 0"
                 type="button"
                 class="p-button-danger"
                 pButton
@@ -185,10 +145,7 @@
                 (click)="removeContact(i)"
               ></button>
               <button
-                *ngIf="
-                  contactInfoData.length === 1 ||
-                  i === contactInfoData.length - 1
-                "
+                *ngIf="contactInfo.length === 1 || i === contactInfo.length - 1"
                 type="button"
                 class="p-button-success"
                 pButton
@@ -201,14 +158,14 @@
         </div>
       </p-fieldset>
 
-      <div class="action-buttons top">
+      <div class="update-cancel top">
         <p-toast></p-toast>
         <button
           pButton
           pRipple
           label="Update"
           class="p-button-success"
-          (click)="updateCustomerForm()"
+          (click)="updateSupplierForm()"
         ></button>
         <button
           pButton

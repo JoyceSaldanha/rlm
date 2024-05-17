@@ -4,10 +4,6 @@
     gap: 2rem;
 }
 
-.checkbox-input {
-    margin-top: 2rem;
-}
-
 .action-buttons{
     margin-top: 2rem;
     display: flex;
@@ -18,6 +14,7 @@
 .contact-container {
     display: flex;
     gap: 3rem;
+    margin-bottom: 2rem;
 }
 
 .plus-minus-buttons {

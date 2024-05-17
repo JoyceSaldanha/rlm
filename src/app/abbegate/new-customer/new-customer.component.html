@@ -4,7 +4,7 @@
     <h3 style="text-align: center">New Customer Form</h3>
 
     <div>
-      <p-fieldset legend="Company Details" [toggleable]="false">
+      <p-fieldset legend="Company Details">
         <div class="company-container">
           <!-- Personal Info form - name, email, phone -->
           <div class="form-group" formGroupName="companyInfo">
@@ -199,7 +199,6 @@
       </p-fieldset>
 
       <div class="action-buttons top">
-        <p-toast></p-toast>
         <button
           pButton
           pRipple
@@ -217,4 +216,5 @@
       </div>
     </div>
   </form>
+  <p-toast></p-toast>
 </div>

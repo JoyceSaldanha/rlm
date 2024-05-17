@@ -18,7 +18,11 @@ export class ViewCustomerComponent {
   rows: number = 10;
   totalRecordsCount: number = 0;
   showSearchFields: boolean = false;
-  inputValue: string = '';
+  name: string = '';
+  email: string = '';
+  country: string = '';
+  zipcode: any;
+  group: string = '';
 
   customerFormData: any;
   constructor(private customerService: CustomerService,private messageService: MessageService, private router: Router) {
@@ -77,16 +81,23 @@ export class ViewCustomerComponent {
       this.showSearchFields = !this.showSearchFields;
     }
 
-    search() {
-      if (!this.inputValue) {
+    search(value: any) {
+      if (!value) {
         this.getCustomerFormDetails();
       } else {
-        // Filter the table data based on the searchText
-        this.filterTableData();
+        this.filterTableData(value);
       }
     }
 
-    filterTableData() {
-      this.customerFormData.companyData = this.customerFormData.companyData.filter((profile: any) => profile.companyName.toLowerCase().includes(this.inputValue));
+    filterTableData(value: any) {
+      this.customerFormData.companyData = this.customerFormData.companyData.filter((profile: any) => {
+        return (
+          profile.companyName.toLowerCase().includes(value.toLowerCase()) ||
+          profile.companyEmail.toLowerCase().includes(value.toLowerCase()) ||
+          profile.country.toLowerCase().includes(value.toLowerCase()) ||
+          profile.zipCode.toString().includes(value) ||
+          profile.group_name.toLowerCase().includes(value.toLowerCase())
+        );
+      });
     }
 }

@@ -11,6 +11,8 @@ import { NewProductComponent } from './abbegate/new-product/new-product.componen
 import { ViewProductComponent } from './abbegate/view-product/view-product.component';
 import { NewSupplierComponent } from './abbegate/new-supplier/new-supplier.component';
 import { ViewSupplierComponent } from './abbegate/view-supplier/view-supplier.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateSupplierComponent } from './abbegate/update-supplier/update-supplier.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -24,11 +26,12 @@ const routes: Routes = [
   {path:'abbegate/newProduct',component: NewProductComponent},
   {path:'abbegate/viewProduct',component: ViewProductComponent},
   {path:'abbegate/newSupplier',component:NewSupplierComponent},
-  {path:'abbegate/viewSupplier',component:ViewSupplierComponent}
+  {path:'abbegate/viewSupplier',component:ViewSupplierComponent},
+  {path:'abbegate/updateSupplier/:id', component:UpdateSupplierComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),ReactiveFormsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

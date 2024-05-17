@@ -144,7 +144,7 @@ updateCustomerForm() {
     if(response.success == true) {
       this.messageService.add({
             severity: 'success',
-            summary: 'Customer created successfully',
+            summary: 'Customer updated successfully',
             life: 3000 // Adjust the toast display duration as needed
           });
       this.customerForm.reset();
@@ -153,6 +153,10 @@ updateCustomerForm() {
           },1000);
     }
   })
+}
+
+closeUpdate(): void {
+  this.router.navigate(['/abbegate/viewCustomer']);
 }
 
 }

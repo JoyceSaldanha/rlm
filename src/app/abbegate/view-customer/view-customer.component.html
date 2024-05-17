@@ -2,7 +2,7 @@
 <h2 style="text-align: center">Company Details</h2>
 
 <p-table
-  (onFilter)="search()"
+  (onFilter)="search('')"
   [value]="customerFormData?.companyData"
   [paginator]="true"
   [rows]="10"
@@ -25,14 +25,46 @@
           type="text"
           pInputText
           placeholder="Name"
-          [(ngModel)]="inputValue"
-          (keyup.enter)="search()"
+          [(ngModel)]="name"
+          (keyup.enter)="search(name)"
         />
       </th>
-      <th><input type="text" pInputText placeholder="Email" /></th>
-      <th><input type="text" pInputText placeholder="Country" /></th>
-      <th><input type="text" pInputText placeholder="Zip Code" /></th>
-      <th><input type="text" pInputText placeholder="Group" /></th>
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Email"
+          [(ngModel)]="email"
+          (keyup.enter)="search(email)"
+        />
+      </th>
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Country"
+          [(ngModel)]="country"
+          (keyup.enter)="search(country)"
+        />
+      </th>
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Zip Code"
+          [(ngModel)]="zipcode"
+          (keyup.enter)="search(zipcode)"
+        />
+      </th>
+      <th>
+        <input
+          type="text"
+          pInputText
+          placeholder="Group"
+          [(ngModel)]="group"
+          (keyup.enter)="search(group)"
+        />
+      </th>
       <th></th>
       <th></th>
     </tr>

@@ -35,6 +35,7 @@ import { NewProductComponent } from './abbegate/new-product/new-product.componen
 import { ViewProductComponent } from './abbegate/view-product/view-product.component';
 import { NewSupplierComponent } from './abbegate/new-supplier/new-supplier.component';
 import { ViewSupplierComponent } from './abbegate/view-supplier/view-supplier.component';
+import { UpdateSupplierComponent } from './abbegate/update-supplier/update-supplier.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ViewSupplierComponent } from './abbegate/view-supplier/view-supplier.co
     NewProductComponent,
     ViewProductComponent,
     NewSupplierComponent,
-    ViewSupplierComponent
+    ViewSupplierComponent,
+    UpdateSupplierComponent
   ],
   imports: [
     BrowserModule,

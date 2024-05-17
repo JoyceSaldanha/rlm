@@ -1,0 +1,24 @@
+.supplier-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+.contact-item{
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.top {
+    margin-top: 2rem;
+}
+
+.action-buttons {
+    display: contents;
+}
+
+.update-cancel {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
