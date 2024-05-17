@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomerService } from '../../service/customer.service';
+import { CustomerService } from '../../../service/customer.service';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 

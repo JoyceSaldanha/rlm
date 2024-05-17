@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CustomerService } from '../../service/customer.service';
+import { CustomerService } from '../../../service/customer.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 

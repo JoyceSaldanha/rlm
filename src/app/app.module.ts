@@ -20,22 +20,22 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { MenubarModule } from 'primeng/menubar';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AbbegateHeaderComponent } from './abbegate/abbegate-header/abbegate-header.component';
-import { NewCustomerComponent } from './abbegate/new-customer/new-customer.component';
+import { NewCustomerComponent } from './abbegate/customer/new-customer/new-customer.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox';
-import { ViewCustomerComponent } from './abbegate/view-customer/view-customer.component';
+import { ViewCustomerComponent } from './abbegate/customer/view-customer/view-customer.component';
 import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { FieldsetModule } from 'primeng/fieldset';
-import { UpdateCustomerComponent } from './abbegate/update-customer/update-customer.component';
+import { UpdateCustomerComponent } from './abbegate/customer/update-customer/update-customer.component';
 import { NewProductComponent } from './abbegate/new-product/new-product.component';
 import { ViewProductComponent } from './abbegate/view-product/view-product.component';
-import { NewSupplierComponent } from './abbegate/new-supplier/new-supplier.component';
-import { ViewSupplierComponent } from './abbegate/view-supplier/view-supplier.component';
-import { UpdateSupplierComponent } from './abbegate/update-supplier/update-supplier.component';
+import { NewSupplierComponent } from './abbegate/supplier/new-supplier/new-supplier.component';
+import { ViewSupplierComponent } from './abbegate/supplier/view-supplier/view-supplier.component';
+import { UpdateSupplierComponent } from './abbegate/supplier/update-supplier/update-supplier.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({

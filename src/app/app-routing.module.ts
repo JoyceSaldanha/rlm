@@ -4,15 +4,15 @@ import { LoginComponent } from './login/login.component';
 import { AbbegateComponent } from './abbegate/abbegate.component';
 import { TrackAndTraceComponent } from './track-and-trace/track-and-trace.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { NewCustomerComponent } from './abbegate/new-customer/new-customer.component';
-import { ViewCustomerComponent } from './abbegate/view-customer/view-customer.component';
-import { UpdateCustomerComponent } from './abbegate/update-customer/update-customer.component';
+import { NewCustomerComponent } from './abbegate/customer/new-customer/new-customer.component';
+import { ViewCustomerComponent } from './abbegate/customer/view-customer/view-customer.component';
+import { UpdateCustomerComponent } from './abbegate/customer/update-customer/update-customer.component';
 import { NewProductComponent } from './abbegate/new-product/new-product.component';
 import { ViewProductComponent } from './abbegate/view-product/view-product.component';
-import { NewSupplierComponent } from './abbegate/new-supplier/new-supplier.component';
-import { ViewSupplierComponent } from './abbegate/view-supplier/view-supplier.component';
+import { NewSupplierComponent } from './abbegate/supplier/new-supplier/new-supplier.component';
+import { ViewSupplierComponent } from './abbegate/supplier/view-supplier/view-supplier.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateSupplierComponent } from './abbegate/update-supplier/update-supplier.component';
+import { UpdateSupplierComponent } from './abbegate/supplier/update-supplier/update-supplier.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SupplierService } from '../../service/supplier.service';
+import { SupplierService } from '../../../service/supplier.service';
 import { __values } from 'tslib';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';

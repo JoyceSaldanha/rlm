@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { SupplierService } from '../../service/supplier.service';
+import { SupplierService } from '../../../service/supplier.service';
 
 @Component({
   selector: 'app-update-supplier',

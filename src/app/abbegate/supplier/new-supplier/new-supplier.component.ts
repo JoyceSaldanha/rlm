@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { SupplierService } from '../../service/supplier.service';
+import { SupplierService } from '../../../service/supplier.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 

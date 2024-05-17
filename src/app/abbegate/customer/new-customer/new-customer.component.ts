@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { CustomerService } from '../../service/customer.service';
+import { CustomerService } from '../../../service/customer.service';
 
 @Component({
   selector: 'app-new-customer',
