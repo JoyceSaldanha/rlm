@@ -22,7 +22,12 @@
             <label for="zipcode">Zip Code</label>
           </p-floatLabel>
           <p-floatLabel>
-            <input pInputText id="contact" formControlName="phoneNumber" />
+            <input
+              pInputText
+              id="contact"
+              formControlName="phoneNumber"
+              maxlength="10"
+            />
             <label for="contact">Contact Number</label>
           </p-floatLabel>
           <p-floatLabel>
@@ -75,6 +80,7 @@
                 id="phone"
                 type="text"
                 pInputText
+                maxlength="10"
                 formControlName="contactPhoneNumber"
               />
               <label for="phone">Phone number</label>

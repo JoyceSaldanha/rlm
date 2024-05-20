@@ -31,12 +31,15 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { FieldsetModule } from 'primeng/fieldset';
 import { UpdateCustomerComponent } from './abbegate/customer/update-customer/update-customer.component';
-import { NewProductComponent } from './abbegate/new-product/new-product.component';
-import { ViewProductComponent } from './abbegate/view-product/view-product.component';
+import { NewProductComponent } from './abbegate/product/new-product/new-product.component';
+import { ViewProductComponent } from './abbegate/product/view-product/view-product.component';
 import { NewSupplierComponent } from './abbegate/supplier/new-supplier/new-supplier.component';
 import { ViewSupplierComponent } from './abbegate/supplier/view-supplier/view-supplier.component';
 import { UpdateSupplierComponent } from './abbegate/supplier/update-supplier/update-supplier.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { NewQuoteComponent } from './abbegate/quotes/new-quote/new-quote.component';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { NewOrderComponent } from './abbegate/orders/new-order/new-order.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ViewProductComponent,
     NewSupplierComponent,
     ViewSupplierComponent,
-    UpdateSupplierComponent
+    UpdateSupplierComponent,
+    NewQuoteComponent,
+    NewOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +83,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ToastModule,
     DialogModule,
     FieldsetModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    InputNumberModule
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]

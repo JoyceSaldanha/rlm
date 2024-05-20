@@ -38,6 +38,8 @@
                 type="text"
                 pInputText
                 formControlName="companyPhoneNumber"
+                pattern="[0-9]*"
+                maxlength="10"
               />
               <label for="phone">Phone number</label>
             </p-floatLabel>
@@ -159,6 +161,7 @@
                   id="phone"
                   type="text"
                   pInputText
+                  maxlength="10"
                   formControlName="contactPhoneNumber"
                 />
                 <label for="phone">Phone number</label>

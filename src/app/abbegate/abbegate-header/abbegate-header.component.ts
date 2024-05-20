@@ -29,7 +29,8 @@ export class AbbegateHeaderComponent {
                           },
                           {
                             label: 'New Quote',
-                            icon: 'pi pi-external-link'
+                            icon: 'pi pi-external-link',
+                            routerLink:['/abbegate/newQuote']
                         }
                       ]
                   },
@@ -50,7 +51,8 @@ export class AbbegateHeaderComponent {
                         },
                         {
                           label: 'New Order',
-                          icon: 'pi pi-external-link'
+                          icon: 'pi pi-external-link',
+                          routerLink: ['/abbegate/newOrder']
                       }
                     ]
                   },

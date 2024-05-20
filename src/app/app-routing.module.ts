@@ -7,12 +7,14 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NewCustomerComponent } from './abbegate/customer/new-customer/new-customer.component';
 import { ViewCustomerComponent } from './abbegate/customer/view-customer/view-customer.component';
 import { UpdateCustomerComponent } from './abbegate/customer/update-customer/update-customer.component';
-import { NewProductComponent } from './abbegate/new-product/new-product.component';
-import { ViewProductComponent } from './abbegate/view-product/view-product.component';
+import { NewProductComponent } from './abbegate/product/new-product/new-product.component';
+import { ViewProductComponent } from './abbegate/product/view-product/view-product.component';
 import { NewSupplierComponent } from './abbegate/supplier/new-supplier/new-supplier.component';
 import { ViewSupplierComponent } from './abbegate/supplier/view-supplier/view-supplier.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateSupplierComponent } from './abbegate/supplier/update-supplier/update-supplier.component';
+import { NewQuoteComponent } from './abbegate/quotes/new-quote/new-quote.component';
+import { NewOrderComponent } from './abbegate/orders/new-order/new-order.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -27,7 +29,9 @@ const routes: Routes = [
   {path:'abbegate/viewProduct',component: ViewProductComponent},
   {path:'abbegate/newSupplier',component:NewSupplierComponent},
   {path:'abbegate/viewSupplier',component:ViewSupplierComponent},
-  {path:'abbegate/updateSupplier/:id', component:UpdateSupplierComponent}
+  {path:'abbegate/updateSupplier/:id', component:UpdateSupplierComponent},
+  {path:'abbegate/newQuote',component:NewQuoteComponent},
+  {path:'abbegate/newOrder',component:NewOrderComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,92 @@
+<app-abbegate-header></app-abbegate-header>
+<div class="quotes-container">
+  <p-fieldset legend="New Quote">
+    <div class="container">
+      <p-floatLabel>
+        <input pInputText id="ordername" />
+        <label for="ordername">Order Name</label>
+      </p-floatLabel>
+      <p-floatLabel>
+        <input pInputText id="customer" />
+        <label for="customer">Customer</label>
+      </p-floatLabel>
+      <p-floatLabel>
+        <input pInputText id="contact" />
+        <label for="contact">Contact Number</label>
+      </p-floatLabel>
+      <p-dropdown
+        [options]="quote"
+        optionLabel="name"
+        placeholder="Source Type"
+      />
+      <p-floatLabel>
+        <input pInputText id="detail" />
+        <label for="detail">Source Detail</label>
+      </p-floatLabel>
+      <p-inputNumber variant="filled" placeholder="Days valid for" />
+      <p-floatLabel>
+        <input pInputText id="username" />
+        <label for="username">Estimated Value</label>
+      </p-floatLabel>
+      <p-floatLabel>
+        <input pInputText id="username" />
+        <label for="username">Address</label>
+      </p-floatLabel>
+      <p-floatLabel>
+        <input pInputText id="username" />
+        <label for="username">ZipCode</label>
+      </p-floatLabel>
+      <p-floatLabel>
+        <input pInputText id="username" />
+        <label for="username">Customer Special Notes</label>
+      </p-floatLabel>
+      <div>
+        <p-checkbox value="New York" inputId="vat" />
+        <label for="vat">VAT Required</label>
+      </div>
+    </div>
+  </p-fieldset>
+
+  <div class="top">
+    <p-fieldset legend="Details">
+      <div>
+        <div class="contact-item">
+          <p-floatLabel>
+            <input id="name" type="text" pInputText />
+            <label for="name">Category Number</label>
+          </p-floatLabel>
+          <p-floatLabel>
+            <input id="email" type="email" pInputText />
+            <label for="email">Product Name</label>
+          </p-floatLabel>
+          <p-floatLabel>
+            <input id="phone" type="text" pInputText />
+            <label for="phone">Quantity</label>
+          </p-floatLabel>
+
+          <div class="action-buttons">
+            <button
+              type="button"
+              class="p-button-danger"
+              pButton
+              pRipple
+              icon="pi pi-minus-circle"
+            ></button>
+            <button
+              type="button"
+              class="p-button-success"
+              pButton
+              pRipple
+              icon="pi pi-plus-circle"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </p-fieldset>
+
+    <div class="main-buttons">
+      <button pButton pRipple label="Save" class="p-button-success"></button>
+      <button pButton pRipple label="Cancel" class="p-button-danger"></button>
+    </div>
+  </div>
+</div>
