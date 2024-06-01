@@ -21,7 +21,8 @@ export class AbbegateHeaderComponent {
                       items: [
                           {
                               label: 'Live',
-                              icon: 'pi pi-fw pi-bookmark'
+                              icon: 'pi pi-fw pi-bookmark',
+                              routerLink:['/abbegate/quoteLive']
                           },
                           {
                               label: 'Completed',
@@ -124,6 +125,7 @@ export class AbbegateHeaderComponent {
                 {
                     label: 'Live',
                     icon: 'pi pi-fw pi-pencil',
+                    routerLink: ['/abbegate/studioLive']
                 },
                 {
                     label: 'View',

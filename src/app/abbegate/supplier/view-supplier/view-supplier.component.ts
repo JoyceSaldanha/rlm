@@ -18,6 +18,7 @@ export class ViewSupplierComponent implements OnInit{
   zipcode: any;
   phoneNumber:any;
   subcontractor: any;
+  groupName:any;
 
   constructor(private service: SupplierService, private confirmationService: ConfirmationService,private messageService: MessageService, private router: Router) {
 
@@ -55,6 +56,7 @@ export class ViewSupplierComponent implements OnInit{
         profile.email.toLowerCase().includes(value.toLowerCase()) ||
         profile.address.toLowerCase().includes(value.toLowerCase()) ||
         profile.zip_code.toString().includes(value) ||
+        profile.groupName.toString().includes(value) ||
         profile.contact_number.toLowerCase().includes(value.toLowerCase()) ||
         subcontractorValue.toLowerCase().includes(value.toLowerCase())
       );

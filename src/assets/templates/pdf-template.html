@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Company Information</title>
+  </head>
+  <body>
+    <img
+      src="../assets/images/abbegate-logo.jpg"
+      alt="Company Logo"
+      style="width: 5rem"
+    />
+    <h2>Company Information</h2>
+    <p>Company Name: {{companyName}}</p>
+    <p>Email: {{companyEmail}}</p>
+    <p>Phone Number: {{companyPhoneNumber}}</p>
+    <p>Address: {{address}}, {{city}}, {{country}} - {{zipCode}}</p>
+    <p>Group: {{group}}</p>
+    <p>Sales: {{sales}}</p>
+    <p>Status: {{status}}</p>
+
+    <h2>Contact Information</h2>
+    <table style="width: 100%; border-collapse: collapse">
+      <thead>
+        <tr>
+          <th
+            style="
+              padding: 8px;
+              text-align: left;
+              border: 1px solid black;
+              background-color: #f2f2f2;
+            "
+          >
+            Contact Name
+          </th>
+          <th
+            style="
+              padding: 8px;
+              text-align: left;
+              border: 1px solid black;
+              background-color: #f2f2f2;
+            "
+          >
+            Contact Email
+          </th>
+          <th
+            style="
+              padding: 8px;
+              text-align: left;
+              border: 1px solid black;
+              background-color: #f2f2f2;
+            "
+          >
+            Contact Phone Number
+          </th>
+          <th
+            style="
+              padding: 8px;
+              text-align: left;
+              border: 1px solid black;
+              background-color: #f2f2f2;
+            "
+          >
+            Categories
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {{contactInfo}}
+      </tbody>
+    </table>
+  </body>
+</html>

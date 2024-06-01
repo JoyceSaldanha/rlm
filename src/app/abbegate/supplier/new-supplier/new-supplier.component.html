@@ -35,6 +35,13 @@
             <label for="info">Additional Info (Optional)</label>
           </p-floatLabel>
 
+          <p-dropdown
+            [options]="groups"
+            optionLabel="name"
+            placeholder="Select a Group"
+            formControlName="group"
+          ></p-dropdown>
+
           <div>
             <p-checkbox
               inputId="sc"

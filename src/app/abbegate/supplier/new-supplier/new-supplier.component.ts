@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { SupplierService } from '../../../service/supplier.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { group } from '@angular/animations';
 
 @Component({
   selector: 'app-new-supplier',
@@ -15,6 +16,7 @@ contactInfo: any;
 supplierForm !: FormGroup;
 supplierContactInfo: FormArray;
 supplierData: any;
+groups: any;
 
 constructor(private formBuilder: FormBuilder, private service: SupplierService, private messageService: MessageService, private router: Router) {
   this.supplierContactInfo = this.formBuilder.array([
@@ -27,6 +29,12 @@ constructor(private formBuilder: FormBuilder, private service: SupplierService, 
 }
 
 ngOnInit(): void {
+  this.groups = [
+    { name: 'Abbegate' },
+    { name: 'Promo Presence' },
+    { name: 'PUP Exports'}
+];
+
   this.supplierForm = this.formBuilder.group({
     supplierInfo: this.formBuilder.group({
       supplierName: [''],
@@ -35,6 +43,7 @@ ngOnInit(): void {
       zipCode: [''],
       phoneNumber: [''],
       additionalInfo: [''],
+      group: [''],
       subContractor: [false],
     }),
     supplierContactInfo: this.supplierContactInfo
@@ -57,6 +66,7 @@ ngOnInit(): void {
 
   createSupplier(): void {
     const formData = this.supplierForm.getRawValue();
+    console.log(formData)
     this.service.saveSupplierDetails(formData).subscribe((response: any) => {
       if(response.success == true) {
         this.messageService.add({

@@ -15,6 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateSupplierComponent } from './abbegate/supplier/update-supplier/update-supplier.component';
 import { NewQuoteComponent } from './abbegate/quotes/new-quote/new-quote.component';
 import { NewOrderComponent } from './abbegate/orders/new-order/new-order.component';
+import { QuoteLiveComponent } from './abbegate/quotes/quote-live/quote-live.component';
+import { StudioLiveComponent } from './abbegate/studio/studio-live/studio-live.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -31,7 +33,9 @@ const routes: Routes = [
   {path:'abbegate/viewSupplier',component:ViewSupplierComponent},
   {path:'abbegate/updateSupplier/:id', component:UpdateSupplierComponent},
   {path:'abbegate/newQuote',component:NewQuoteComponent},
-  {path:'abbegate/newOrder',component:NewOrderComponent}
+  {path:'abbegate/newOrder',component:NewOrderComponent},
+  {path:'abbegate/quoteLive',component:QuoteLiveComponent},
+  {path:'abbegate/studioLive',component:StudioLiveComponent}
 ];
 
 @NgModule({

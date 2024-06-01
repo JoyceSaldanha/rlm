@@ -3,6 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../../../service/customer.service';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import jsPDF from 'jspdf';
+// import 'jspdf-autotable';
+import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-update-customer',
@@ -20,7 +24,7 @@ export class UpdateCustomerComponent {
   contactInfoData: any[] = [];
 // contactInfoControls: any;
 
-  constructor(private route: ActivatedRoute, private confirmationService: ConfirmationService, private service: CustomerService,private formBuilder: FormBuilder,private router: Router,private messageService: MessageService) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private confirmationService: ConfirmationService, private service: CustomerService,private formBuilder: FormBuilder,private router: Router,private messageService: MessageService) {
     this.customerForm = this.formBuilder.group({
       companyInfo: this.formBuilder.group({
         companyName: '',
@@ -175,6 +179,82 @@ updateCustomerForm() {
 
 closeUpdate(): void {
   this.router.navigate(['/abbegate/viewCustomer']);
+}
+
+pdfDownload(): void {
+  const data = this.customerForm.getRawValue();
+  console.log(data);
+  this.getHtml(data).subscribe((html: string) => {
+    const doc = new jsPDF();
+    doc.html(html, {
+      x: 15,
+      y: 15,
+      width: 170,
+      windowWidth: 650,
+      callback: (doc) => {
+        const blob = doc.output('blob');
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.style.position = 'absolute';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        document.body.appendChild(iframe);
+
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Close';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '10px';
+        closeButton.style.right = '1px';
+        closeButton.style.zIndex = '999';
+        closeButton.style.padding = '5px';
+        closeButton.addEventListener('click', () => {
+          document.body.removeChild(iframe);
+          document.body.removeChild(closeButton);
+        });
+        document.body.appendChild(closeButton);
+
+      }
+    });
+  });
+}
+
+getHtml(data: any): Observable<string> {
+  return this.http.get('assets/templates/pdf-template.html', { responseType: 'text' }).pipe(
+    map((html: string) => {
+      html = html.replace('{{companyName}}', data.companyInfo.companyName)
+                  .replace('{{companyEmail}}', data.companyInfo.companyEmail)
+                  .replace('{{companyPhoneNumber}}', data.companyInfo.companyPhoneNumber)
+                  .replace('{{address}}', data.companyInfo.address)
+                  .replace('{{city}}', data.companyInfo.city)
+                  .replace('{{country}}', data.companyInfo.country)
+                  .replace('{{zipCode}}', data.companyInfo.zipCode)
+                  .replace('{{group}}', data.companyInfo.group.name)
+                  .replace('{{sales}}', data.companyInfo.sales)
+                  .replace('{{status}}', data.companyInfo.status.name);
+
+                  // Generate the contact info table rows
+      let contactInfoHtml = '';
+      data.contactInfo.forEach((contact: any) => {
+        contactInfoHtml += `
+          <tr >
+            <td style="border: 1px solid black;padding: 8px;">${contact.contactName}</td>
+            <td style="border: 1px solid black;padding: 8px;">${contact.contactEmail}</td>
+            <td style="border: 1px solid black;padding: 8px;">${contact.contactPhoneNumber}</td>
+            <td style="border: 1px solid black;padding: 8px;">${contact.category.map((category: any) => category.name).join(', ')}</td>
+          </tr>
+        `;
+      });
+      html = html.replace('{{contactInfo}}', contactInfoHtml);
+
+      return html;
+    })
+  );
 }
 
 }

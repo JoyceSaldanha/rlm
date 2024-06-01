@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../../service/product.service';
+import { FileUploadEvent, UploadEvent } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-new-product',
@@ -10,6 +11,7 @@ export class NewProductComponent {
   groups: any;
   department: any;
   supplier:any;
+  uploadedFiles: any[] = [];
 
   constructor(private service: ProductService) {
 
@@ -54,4 +56,10 @@ export class NewProductComponent {
         this.supplier = response.supplierName;
       })
     }
+
+    onUpload(event: any) {
+      for(let file of event.files) {
+        this.uploadedFiles.push(file);
+    }
+      }
 }

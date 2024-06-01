@@ -79,6 +79,15 @@
             </p-floatLabel>
           </div>
 
+          <div class="form-group" formGroupName="supplierInfo">
+            <p-dropdown
+              [options]="groups"
+              optionLabel="name"
+              placeholder="Select a Group"
+              formControlName="groupName"
+            ></p-dropdown>
+          </div>
+
           <div formGroupName="supplierInfo">
             <p-checkbox
               inputId="sc"

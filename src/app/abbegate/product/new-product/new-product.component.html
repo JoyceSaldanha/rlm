@@ -34,6 +34,22 @@
           <input id="supplierRef" type="text" pInputText />
           <label for="supplierRef">Supplier Reference</label>
         </p-floatLabel>
+
+        <p-fileUpload
+          [multiple]="true"
+          chooseIcon="pi pi-upload"
+          accept="image/*"
+          [auto]="true"
+          (onUpload)="onUpload($event)"
+          chooseLabel="Upload"
+          ><ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+              <li *ngFor="let file of uploadedFiles">
+                {{ file.name }} - {{ file.size }} bytes
+              </li>
+            </ul>
+          </ng-template>
+        </p-fileUpload>
       </div>
       <div class="action-buttons">
         <button

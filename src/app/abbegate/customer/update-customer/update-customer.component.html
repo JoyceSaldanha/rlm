@@ -1,8 +1,10 @@
 <app-abbegate-header></app-abbegate-header>
 <div class="container">
   <form class="form-container" [formGroup]="customerForm">
-    <h3 style="text-align: center">Edit Customer Form</h3>
-
+    <h3 style="text-align: center">
+      Edit Customer Form
+      <span class="pi pi-download" (click)="pdfDownload()"></span>
+    </h3>
     <div>
       <p-fieldset legend="Company Details">
         <div class="company-container">

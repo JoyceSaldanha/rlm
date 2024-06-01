@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './new-quote.component.css'
 })
 export class NewQuoteComponent {
-  quote: any
+  quote: any;
 
   ngOnInit() {
     this.quote = [

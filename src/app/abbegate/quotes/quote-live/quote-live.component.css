@@ -1,0 +1,41 @@
+.quote-live-container {
+    margin-top: 2rem;
+    display: flex;
+}
+
+.search-section {
+    display: flex;
+    gap: 3rem;
+}
+
+.view-section {
+    width: 40%;
+}
+
+.detail-section {
+    width: 60%;
+    margin-left: 0.5rem;
+}
+
+.table-section {
+    margin-top: 1rem;
+}
+
+.calendar-section {
+    display: grid;
+    gap: 1rem;
+}
+.quote-details{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
+}
+.mail{
+    display: grid;
+    gap: 1rem;
+}
+
+/* .action-buttons {
+
+} */

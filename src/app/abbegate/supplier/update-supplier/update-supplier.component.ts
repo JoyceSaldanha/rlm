@@ -16,8 +16,15 @@ export class UpdateSupplierComponent implements OnInit{
   supplierData: any;
   contactInfoData: any[] = []
   contactInfo: FormArray;
+  groups: any;
 
   constructor(private service: SupplierService,private confirmationService: ConfirmationService,private route: ActivatedRoute,private formBuilder: FormBuilder, private router: Router,private messageService: MessageService) {
+    this.groups = [
+      { name: 'Abbegate' },
+      { name: 'Promo Presence' },
+      { name: 'PUP Exports'}
+  ];
+
     this.supplierForm = this.formBuilder.group({
       supplierInfo: this.formBuilder.group({
         supplierName: '',
@@ -26,6 +33,7 @@ export class UpdateSupplierComponent implements OnInit{
         address: '',
         zipCode: '',
         additionalInfo: '',
+        groupName: '',
         subContractor: false
       }),
       contactInfo: this.formBuilder.array([])
@@ -57,6 +65,7 @@ export class UpdateSupplierComponent implements OnInit{
         supplierPhoneNumber: this.supplierData.contact_number,
         address: this.supplierData.address,
         additionalInfo: this.supplierData.additional_info,
+        groupName: this.groups.find((g: { name: any; }) => g.name === this.supplierData.group_name),
         zipCode: this.supplierData.zip_code,
         subContractor: isSubcontractor
       });

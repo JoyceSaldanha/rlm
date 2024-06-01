@@ -40,6 +40,15 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { NewQuoteComponent } from './abbegate/quotes/new-quote/new-quote.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { NewOrderComponent } from './abbegate/orders/new-order/new-order.component';
+import { QuoteLiveComponent } from './abbegate/quotes/quote-live/quote-live.component';
+import { TabViewModule } from 'primeng/tabview';
+import { CalendarModule } from 'primeng/calendar';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { ChipsModule } from 'primeng/chips';
+import { ChipModule } from 'primeng/chip';
+import { FileUploadModule } from 'primeng/fileupload';
+import { StudioLiveComponent } from './abbegate/studio/studio-live/studio-live.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +68,9 @@ import { NewOrderComponent } from './abbegate/orders/new-order/new-order.compone
     ViewSupplierComponent,
     UpdateSupplierComponent,
     NewQuoteComponent,
-    NewOrderComponent
+    NewOrderComponent,
+    QuoteLiveComponent,
+    StudioLiveComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +95,14 @@ import { NewOrderComponent } from './abbegate/orders/new-order/new-order.compone
     DialogModule,
     FieldsetModule,
     ConfirmDialogModule,
-    InputNumberModule
+    InputNumberModule,
+    TabViewModule,
+    CalendarModule,
+    InputIconModule,
+    IconFieldModule,
+    ChipsModule,
+    ChipModule,
+    FileUploadModule
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]
