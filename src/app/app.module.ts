@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
@@ -50,61 +50,54 @@ import { ChipModule } from 'primeng/chip';
 import { FileUploadModule } from 'primeng/fileupload';
 import { StudioLiveComponent } from './abbegate/studio/studio-live/studio-live.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    CardsComponent,
-    AbbegateComponent,
-    TrackAndTraceComponent,
-    UserProfileComponent,
-    AbbegateHeaderComponent,
-    NewCustomerComponent,
-    ViewCustomerComponent,
-    UpdateCustomerComponent,
-    NewProductComponent,
-    ViewProductComponent,
-    NewSupplierComponent,
-    ViewSupplierComponent,
-    UpdateSupplierComponent,
-    NewQuoteComponent,
-    NewOrderComponent,
-    QuoteLiveComponent,
-    StudioLiveComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    InputTextModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ButtonModule,
-    MessagesModule,
-    AvatarModule,
-    AvatarGroupModule,
-    CardModule,
-    FloatLabelModule,
-    MenubarModule,
-    DropdownModule,
-    CheckboxModule,
-    TableModule,
-    MultiSelectModule,
-    ToastModule,
-    DialogModule,
-    FieldsetModule,
-    ConfirmDialogModule,
-    InputNumberModule,
-    TabViewModule,
-    CalendarModule,
-    InputIconModule,
-    IconFieldModule,
-    ChipsModule,
-    ChipModule,
-    FileUploadModule
-  ],
-  providers: [MessageService, ConfirmationService],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LoginComponent,
+        CardsComponent,
+        AbbegateComponent,
+        TrackAndTraceComponent,
+        UserProfileComponent,
+        AbbegateHeaderComponent,
+        NewCustomerComponent,
+        ViewCustomerComponent,
+        UpdateCustomerComponent,
+        NewProductComponent,
+        ViewProductComponent,
+        NewSupplierComponent,
+        ViewSupplierComponent,
+        UpdateSupplierComponent,
+        NewQuoteComponent,
+        NewOrderComponent,
+        QuoteLiveComponent,
+        StudioLiveComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        InputTextModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ButtonModule,
+        MessagesModule,
+        AvatarModule,
+        AvatarGroupModule,
+        CardModule,
+        FloatLabelModule,
+        MenubarModule,
+        DropdownModule,
+        CheckboxModule,
+        TableModule,
+        MultiSelectModule,
+        ToastModule,
+        DialogModule,
+        FieldsetModule,
+        ConfirmDialogModule,
+        InputNumberModule,
+        TabViewModule,
+        CalendarModule,
+        InputIconModule,
+        IconFieldModule,
+        ChipsModule,
+        ChipModule,
+        FileUploadModule], providers: [MessageService, ConfirmationService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
