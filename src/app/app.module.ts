@@ -49,6 +49,7 @@ import { ChipsModule } from 'primeng/chips';
 import { ChipModule } from 'primeng/chip';
 import { FileUploadModule } from 'primeng/fileupload';
 import { StudioLiveComponent } from './abbegate/studio/studio-live/studio-live.component';
+import { GalleriaModule } from 'primeng/galleria';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -71,7 +72,8 @@ import { StudioLiveComponent } from './abbegate/studio/studio-live/studio-live.c
         QuoteLiveComponent,
         StudioLiveComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent], 
+    imports: [BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         InputTextModule,
@@ -99,5 +101,8 @@ import { StudioLiveComponent } from './abbegate/studio/studio-live/studio-live.c
         IconFieldModule,
         ChipsModule,
         ChipModule,
-        FileUploadModule], providers: [MessageService, ConfirmationService, provideHttpClient(withInterceptorsFromDi())] })
+        FileUploadModule,
+        GalleriaModule
+    ], 
+    providers: [MessageService, ConfirmationService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

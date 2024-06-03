@@ -1,1 +1,46 @@
 <app-abbegate-header></app-abbegate-header>
+<!-- <p-galleria
+  [value]="images"
+  [responsiveOptions]="responsiveOptions"
+  [containerStyle]="{ 'max-width': '50rem' }"
+  [numVisible]="5"
+>
+  <ng-template pTemplate="item" let-item>
+    <img [src]="images[0]" style="width: 100%" />
+  </ng-template>
+  <ng-template pTemplate="thumbnail" let-item>
+    <div class="grid grid-nogutter justify-content-center">
+      <img [src]="images[1]" />
+    </div>
+  </ng-template>
+</p-galleria> -->
+<!-- app.component.html -->
+<div style="width: 100%">
+  <p-galleria
+    [numVisible]="2"
+    [value]="images"
+    [(activeIndex)]="activeIndex"
+    [autoPlay]="true"
+  >
+    <ng-template pTemplate="item" let-item>
+      <img
+        [src]="item.previewImageSrc"
+        [alt]="item.alt"
+        [title]="item.title"
+        style="width: fit-content"
+      />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item width="50%">
+      <div class="grid grid-nogutter justify-content-center">
+        <img
+          [src]="item.previewImageSrc"
+          [alt]="item.alt"
+          [title]="item.title"
+          width="40%"
+        />
+      </div>
+    </ng-template>
+    <button (click)="prevImage()">&lt;</button>
+    <button (click)="nextImage()">&gt;</button>
+  </p-galleria>
+</div>
